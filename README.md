@@ -1,57 +1,75 @@
-This Write-up is to learn about the MITRE organization and the different areas they research. These areas include the ATT&CK framework, CAR Knowledge Base, ENGAGE, D3FEND and AEP.
+This write-up explores the MITRE organization and its various areas of research, including the ATT&CK framework, CAR Knowledge Base, ENGAGE, D3FEND, and AEP.
 
-First off, what is MITRE exactly? 
-MITRE is a non-profit organization that provides guidance and research on advanced technology, this also includes security, whichn is what I will be focusing on. 
+What is MITRE?
+MITRE is a non-profit organization that provides guidance and research on advanced technology, including security, which is the primary focus of this write-up.
 
 Basic Terms to Note:
+APT (Advanced Persistent Threat): A team, group, or even a nation-state that engages in long-term attacks against organizations and/or countries.
+TTP (Tactics, Techniques, and Procedures): A framework outlining how a malicious actor, or adversary, pursues their objectives.
+Tactic: The adversary’s goal or objective.
+Technique: How the adversary achieves the objective.
+Procedure: The method used to execute the technique.
 
-APT(Advanced Persistent Threat): This is a team/group or even a country that engage in long-term attacks against other organizations and/or countries.
-
-TTP(Tactics, Technics, and procedures): TTP is an acronym that gives a basic outline of what a milicious actor, or adversary will perform in order to reach their goal.
-Tactic: This is the adversaries goal or obvjective.
-Technique: This is how the adversary achieves the objective.
-Procedure: This is how the technique is executed. 
 
 ATT&CK Framework
 
-What is the ATT&CK Framework exactly?
+What is the ATT&CK Framework?
+The ATT&CK Framework is a comprehensive database of adversary tactics and techniques, particularly focusing on APTs and their TTPs. This tool is invaluable for red teams but is essential for security teams defending organizational networks.
 
-This framework is essentially a giant database of adversary tactics and techniques. This heavily includes the before-mentioned APTs and their TTPs that they implement. This tool is useful for individuals who work in a red team environment, but I believe it is quintensential to security teams who defend their organization's network. 
-
-Within the MITRE ATT&CK official website, there is the ATT&CK Matrix, there are 14 categories of techniques an adversary can use to perform their tactics. A lot of these technique sections also include sub techniques. For example, one of the most popular attacks, phishing, has a sub set of techniques like spearfishing, which aims at more important individuals through emails in hopes that the individual will think that the link is legit and click on it. The links can also be used to redirect the target to a site that persuades them to give sensitive information such as passwords to accounts.
+On the official MITRE ATT&CK website, the ATT&CK Matrix lists 14 categories of techniques adversaries use. Many of these techniques have sub-techniques. For example, phishing—a common attack—has sub-techniques like spear phishing, which targets high-value individuals through deceptive emails designed to gain sensitive information, such as passwords.
 
 
 CAR Knowledge Base
 
 What is CAR?
+CAR stands for Cyber Analytics Repository, a knowledge base of analytics based on the MITRE ATT&CK adversary model. It focuses on tools like Splunk and EQL (Event Query Language).
 
-CAR stands for "Cyber Analytics Repository". It is a knowledge base of analytics that is based on the MITRE ATT&CK adversary model. This repository is aimed at specific tools such as Splunk and EQL(Event Query Language)
+Note: EQL is a query language for event-based data like logs, metrics, and traces, similar to Splunk’s proprietary SPL language.
+In the lab, the example CAR-2020-09-001: Scheduled Task - File Access breaks down into three sections: Technique, Sub-techniques, and Tactics. It demonstrates how adversaries use the Windows Task Scheduler to gain persistence, escalate privileges, or execute commands remotely, often targeting C:\Windows\System32\Tasks.
 
-Note: EQL is a query language for event-based time data, such as logs, metrics and traces. Basically it is a similar language to Splunks proprietary language SPL. 
+Note: This is particularly dangerous because compromising the System32 directory can cripple critical servers, causing significant damage to an organization.
 
-In the lab, they use the technique  CAR-2020-09-001: Scheduled Task - File Access as an example. It is broken into three sections. The Technique, Subtechnique(s) and Tactic(s). 
-It explains that in order to gain persistence, priviledge escalation, or remote execution, the actor can use the Windows Task Scheduler to schedule a command to run at a specific time,data, and even a select host machine. The scheduler is commonly know to reside in the path C:\Windows\System32\Tasks\. 
-
-Note:This can be especially dangerous due to the set of folders on the way to the tasks, System32. If the melicious actor where to get access to say, a critic server through a pivot, they could delete this folder and render that server unsusable. This can do significant damage to any organization. 
 
 MITRE Engage
 
-What is MMITRE Engage?
+What is MITRE Engage?
+MITRE Engage is a framework for planning and executing adversary engagement operations, including tactics like Cyber Denial and Cyber Deception to mislead attackers.
 
-MITRE Engage is a framework for planning and discussing adversary engagement operations that empowers you to engage your adversaries and achieve your cybersecurity goals. This is essentially a method of how to engage the adversary by implementing tactics such as Cyber Denial and Cyber Deception.
+Cyber Denial: Preventing adversaries from conducting their operations.
+Cyber Deception: Misleading adversaries with tools like honeypots and false data.
+MITRE Engage has its own matrix, which includes five main sections:
 
-Note: Cyber Denial simply means to prevent the adversary's ability to conduct their normal oprations and Cyber Deception misleads them (EX: Honeypots and false data)
+Prepare actions to lead to the desired outcome.
+Expose adversaries when they interact with deception tools.
+Affect adversaries by disrupting their operations.
+Elicit information by observing their behavior (TTPs).
+Understand the outcomes and results of these actions.
 
-Engage also has its own matrix, which includes five main sections:
-
-Prepare the set of operational actions that will lead to your desired outcome. (Input)
-Expose adversaries when they trigger your deployed deception activities. 
-Affect adversaries by performing actions that will have a negative impact on their operations.
-Elicit information by observing the adversary and learn more about their methods(TTPs).
-Understand the outcomes of the operational actions. (Output)
 
 MITRE D3FEND
 
-What is MITRE D3fEND
+What is MITRE D3FEND?
+MITRE D3FEND is a knowledge graph of defensive cybersecurity measures designed to prevent malicious actors from infiltrating networks and accessing resources.
 
+Note: D3FEND stands for Detection, Denial, and Disruption Framework Empowering Network Defense. The current version (0.17.0) includes detailed techniques, implementation notes, and utilization guidance.
+ATT&CK Emulation Plans (AEP)
+What is ATT&CK Emulation Plans (AEP)?
+MITRE’s Center for Threat-Informed Defense (CTID), comprising companies like AttackIQ, Microsoft, Verizon, Red Canary, and Splunk, developed AEP as a free resource for red and blue teams.
+
+The AEP library includes step-by-step attack guides for adversary groups like APT3, APT29, and FIN6, enabling blue teams to simulate attacks and develop countermeasures.
+
+
+
+Conclusion 
+
+In this lab, I gained valuable insight into MITRE's extensive contributions to the cybersecurity landscape. MITRE is not only a guiding force in advanced technology research but also a critical resource for understanding and combating cyber threats. Exploring the various frameworks and knowledge bases revealed how each serves a unique purpose in enhancing security operations:
+
+MITRE ATT&CK provides a comprehensive library of adversary tactics and techniques, essential for understanding how attackers operate and how to defend against them.
+CAR (Cyber Analytics Repository) bridges the gap between adversary behavior and actionable analytics, emphasizing tools like Splunk and EQL for threat detection.
+MITRE ENGAGE shifts the focus to adversary engagement, using techniques such as cyber deception and denial to disrupt malicious activities.
+MITRE D3FEND offers practical defensive measures, guiding organizations in protecting their assets from intrusions.
+ATT&CK Emulation Plans (AEP) allow security teams to simulate real-world attacks, fostering proactive defense strategies.
+This exploration highlights the importance of adopting a threat-informed defense approach. Each MITRE resource serves as a critical building block in a robust cybersecurity posture, from understanding adversaries to implementing protective measures and testing defenses.
+
+By integrating these tools and frameworks, security teams can enhance their ability to detect, deter, and mitigate threats effectively, ultimately strengthening the overall resilience of their organizations.
 
